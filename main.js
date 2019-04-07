@@ -5,30 +5,37 @@ const animationHideTimeout = 10000;
 const button = document.querySelector("button");
 const tooltips = document.querySelectorAll(".show-tooltip");
 const formThanksfulMessage = document.getElementById("form-message");
+const divOne = document.querySelector(".message-one");
+const email = document.getElementById("email");
+const phone = document.getElementById("number");
+const divTwo = document.querySelector(".message-two");
+const name = document.getElementById("name");
+const divThree = document.querySelector(".message-three");
+const agrement = document.getElementById("agrement-terms-1");
+const agrementTerms = document.getElementById("agrement-terms-2");
+const divFour = document.querySelector(".message-four");
+const divFive = document.querySelector(".message-five");
+const errorMessages = document.getElementsByClassName("error-message");
 
 const clearValidationErrors = () => {
-    let errorMessages = document.getElementsByClassName("error-message");
-
     for (let i = 0; i < errorMessages.length; i++) {
         errorMessages[i].classList.remove("error-message-show");
     }
 };
 
+
+
+phone.addEventListener('keydown', (evt) =>   {
+    let regExp = new RegExp('[a-zA-Z]');
+    if (evt.key !== 'Backspace' && regExp.test(evt.key)) {
+        evt.preventDefault();
+    }
+});
+
 const checkTheBox = (evt) => {
     evt.preventDefault();
     clearValidationErrors();
     let isValid = true;
-
-    const divOne = document.querySelector(".message-one");
-    const email = document.getElementById("email");
-    const phone = document.getElementById("number");
-    const divTwo = document.querySelector(".message-two");
-    const name = document.getElementById("name");
-    const divThree = document.querySelector(".message-three");
-    const agrement = document.getElementById("agrement-terms-1");
-    const agrementTerms = document.getElementById("agrement-terms-2");
-    const divFour = document.querySelector(".message-four");
-    const divFive = document.querySelector(".message-five");
 
 
     if (!name.checkValidity()) {
